@@ -5,6 +5,7 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highScore = 0;
 
+//Show secret number
 //document.querySelector(".number").textContent = secretNumber;
 
 const displayMessage = function (message) {
@@ -14,8 +15,10 @@ const displayMessage = function (message) {
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
   if (score > 1) {
+    //Invalid guess
     if (guess <= 0 || guess > 20) {
       displayMessage("Invalid number!");
+      //Player wins
     } else if (guess === secretNumber) {
       displayMessage("You Win!");
 
@@ -26,6 +29,7 @@ document.querySelector(".check").addEventListener("click", function () {
         highScore = score;
         document.querySelector(".highScore").textContent = highScore;
       }
+      //Wrong guess
     } else if (guess !== secretNumber) {
       displayMessage(guess > secretNumber ? "Lower!" : "Higher!");
       score--;
@@ -44,6 +48,7 @@ document.querySelector(".guess").addEventListener("keypress", function (event) {
   }
 });
 
+//Play again
 document.querySelector(".again").addEventListener("click", function () {
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
